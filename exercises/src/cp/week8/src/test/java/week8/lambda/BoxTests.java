@@ -10,4 +10,10 @@ public class BoxTests {
     public void test() {
         assertEquals(10, box.content());
     }
+
+    @Test
+    public void testBoxFunction() {
+        assertEquals("10", box.apply(element -> Integer.toString(element)));
+    }
+
 }
