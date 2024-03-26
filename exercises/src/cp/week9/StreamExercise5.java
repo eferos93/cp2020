@@ -1,7 +1,22 @@
 package cp.week9;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
+
 public class StreamExercise5
 {
+
+	public static void main(String[] args) throws IOException {
+		Files.lines(Path.of("file.txt"))
+			.map(line -> {
+				Map<String, Integer> lineFrequencyTable = new HashMap<String, Integer>();
+				line.lines().forEach(word -> lineFrequencyTable.put(word, lineFrequencyTable.getOrDefault(word, 0) + 1));
+				return lineFrequencyTable;
+			}).reduce(new HashMap<String, Integer>(), (prevHash, newHash) -> prevHash.);
+	}
 	/* ! (Exercises marked with ! are more difficult.)
 	
 	- Create a stream of lines for the file created in StreamExercise1.
